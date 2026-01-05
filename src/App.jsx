@@ -4,21 +4,27 @@ import { useSelector,useDispatch } from 'react-redux'
 import { increment} from './redux/counterSlice'
 import axios from "axios"
 import { setThunk2 } from './redux/commentSlice'
+import { useGetListQuery } from './redux/api'
 
 function App() {
-  const dispatch = useDispatch()
-  const {commentsArr,isLoading} = useSelector(state=>state.commentSlice)
 
-  function fn(){
+  const obj = useGetListQuery();
+  console.log(obj);
+  // const dispatch = useDispatch()
+  // const {commentsArr,isLoading} = useSelector(state=>state.commentSlice)
 
-    dispatch(setThunk2("https://jsonplaceholder.typicode.com/comments"))
+  // function fn(){
 
-  }
+  //   dispatch(setThunk2("https://jsonplaceholder.typicode.com/comments"))
+
+  // }
 
   return(
     <div className='App'>
-      <button onClick={fn}>Load data</button>
-      {isLoading?<h1>Loading...</h1>:commentsArr.map(item=><p key={item.id}>{item.name}</p>)}
+      APP
+      {/* <button onClick={fn}>Load data</button>
+      {isLoading?<h1>Loading...</h1>:commentsArr.map(item=><p key={item.id}>{item.name}</p>)} */}
+      {/* {obj.data.map(item=><p key={item.id}>{item.name}</p>)} */}
     </div>
   )
 
